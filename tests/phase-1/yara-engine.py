@@ -26,3 +26,21 @@ class YaraEngine:
         else:
             raise ValueError("Only use 'text', 'hex' or 'regex'.")
 
+    def add_condition(self, condition):
+        self.conditions.append(condition)
+
+    def gen_rule(self):
+        meta= f'
+        meta:\n
+        author:"author = "{self.author}"\n        
+        description = "{self.description}"\n        
+        date = "{self.date}"'
+        
+        strings = "strings:\n" + "\n".join([f"        {s}" for s in self.strings])
+        condition = "condition:\n        " + " and ".join(self.conditions)
+        rule = f"rule {self.rule_name} {{\n    {meta}\n\n    {strings}\n\n    {condition}\n}}"
+        return rule
+
+if __name__ == "__main__":
+
+
