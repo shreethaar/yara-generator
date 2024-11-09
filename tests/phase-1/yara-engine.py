@@ -12,7 +12,7 @@ class YaraEngine:
         self.rule_name=rule_name
         self.author=author
         self.description=description
-        self.date=datetime.datetimenow().strftime("%Y-%m-%d")
+        self.date=datetime.datetime.now().strftime("%Y-%m-%d")
         self.strings=[]
         self.conditions=[]
 
@@ -38,17 +38,17 @@ class YaraEngine:
         rule = f"rule {self.rule_name} {{\n    {meta}\n\n    {strings}\n\n    {condition}\n}}"
         return rule
 def main():
-    rule_input=input("Enter the name of the rule:")
-    author_input=input("Enter the author of the rule:")
-    description_input=input("Enter a description for the rule:")
+    rule_input=input("[1]: Enter the name of the rule:")
+    author_input=input("[2]: Enter the author of the rule:")
+    description_input=input("[3]: Enter a description for the rule:")
     generator=YaraEngine(rule_input,author_input,description_input)
 
     while True:
-        identifier = input("Enter the identifier for the string pattern (or type 'done' to finish): ")
+        identifier = input("[4] Enter the identifier for the string pattern (or type 'done' to finish): ")
         if identifier.lower() == 'done':
             break
-        pattern = input(f"Enter the pattern for '{identifier}': ")
-        pattern_type = input("Enter the pattern type ('text', 'hex', or 'regex'): ").lower()
+        pattern = input(f"[5] Enter the pattern for '{identifier}': ")
+        pattern_type = input("[6] Enter the pattern type ('text', 'hex', or 'regex'): ").lower()
         generator.add_string_pattern(identifier, pattern, pattern_type)
 
     while True:
