@@ -31,4 +31,4 @@ To-do:
 1. Complete `yara_generator.py`.
 2. Implement routing logic in `routes.py`.
 3. Design UI templates in `templates/`.
-4. Add test cases in the `tests/` directory.
+4. Add test cases in the `tests/` directory. 
