@@ -6,7 +6,7 @@ To-do:
 - [ ] Adding support for more yara features like wildcards
 - [ ] Implement rule validation
 - [ ] Including predefined templates
-- [ x ]Export yar file feature
+- [x] Export yar file feature
 - [ ] Dark mode for sure
 
 
