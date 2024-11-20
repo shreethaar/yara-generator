@@ -6,6 +6,7 @@ import sys
 import os 
 import argparse
 import hashlib
+from typing import List,Dict, Optional
 
 class YaraEngine:
     def __init__(self, rule_name, author, description=""):
@@ -13,8 +14,15 @@ class YaraEngine:
         self.author=author
         self.description=description
         self.date=datetime.datetime.now().strftime("%Y-%m-%d")
-        self.strings=[]
-        self.conditions=[]
+        self.strings: List[Dict]=[]
+        self.conditions: List[str]=[]
+        self.metadata: Dict[str,str]={}
+
+    def _sanitize_name(self, name: str) -> str:
+        return re.sub(r'[^a-zA-Z0-9_]', '_', name)
+
+    def add_metadata(self, key: str, value: str) -> None:
+        self.metadata[key] = value
 
     def add_string_pattern(self,identifier,pattern,pattern_type="text"):
         if pattern_type=="text":

@@ -1,0 +1,12 @@
+rule test {
+    meta:
+        author = "test"
+        description = "test"
+        date = "2024-11-20"
+
+    strings:
+
+
+    condition:
+        
+}
