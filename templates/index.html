@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YARA Rule Generator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+    <h1>YARA Rule Generator</h1>
+    <form id="ruleForm" class="mb-4">
+        <div class="mb-3">
+            <label for="ruleName" class="form-label">Rule Name</label>
+            <input type="text" class="form-control" id="ruleName" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <input type="text" class="form-control" id="author">
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" rows="2"></textarea>
+        </div>
+
+        <div id="stringsContainer">
+            <h3>Strings</h3>
+            <div class="string-entry mb-3">
+                <div class="row">
+                    <div class="col">
+                        <select class="form-select string-type">
+                            <option value="text">Text</option>
+                            <option value="hex">Hex</option>
+                            <option value="regex">Regex</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control string-value" placeholder="String value">
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-danger remove-string">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary mb-3" id="addString">Add String</button>
+
+        <div class="mb-3">
+            <label for="conditionType" class="form-label">Condition Type</label>
+            <select class="form-select" id="conditionType">
+                <option value="any">Any of them</option>
+                <option value="all">All of them</option>
+                <option value="custom">Custom condition</option>
+            </select>
+        </div>
+
+        <div class="mb-3" id="customConditionContainer" style="display: none;">
+            <label for="customCondition" class="form-label">Custom Condition</label>
+            <input type="text" class="form-control" id="customCondition">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Generate Rule</button>
+    </form>
+
+    <div class="mb-3">
+        <label for="generatedRule" class="form-label">Generated YARA Rule</label>
+        <textarea class="form-control" id="generatedRule" rows="10" readonly></textarea>
+    </div>
