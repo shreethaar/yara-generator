@@ -1,0 +1,12 @@
+rule CountExample {
+    meta:
+        author = "test"
+        description = "CountExample"
+        date = "2024-11-20"
+
+    strings:
+        $$a = "dummy1"
+
+    condition:
+        #a == 6
+}

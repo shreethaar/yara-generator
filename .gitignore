@@ -1,3 +1,5 @@
 venv/
 *.log
-
+/backend/venv/
+/package-lock.json
+/frontend/package-lock.json
